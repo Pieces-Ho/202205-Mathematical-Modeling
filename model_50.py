@@ -31,7 +31,7 @@ if __name__ == "__main__":
  
     plot1 = plt.plot(x, y, '*', label='original values')
     plot2 = plt.plot(x, y_pred, 'r', label='fit values')
-    plt.title('The line graph of relationship between Coefficient of rolling friction and Initial velocity when 0mT')
+    plt.title('The line graph of relationship between Coefficient of rolling friction and Initial velocity when 50mT')
     plt.xlabel('Initial velocity V0')
     plt.ylabel('Coefficient of rolling friction')
     plt.legend(loc=1, borderaxespad=0., bbox_to_anchor=(0, 0))
