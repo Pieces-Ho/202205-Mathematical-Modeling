@@ -6,7 +6,7 @@ if __name__ == "__main__":
     v0 = []
     v1 = []
     cof = []
-    file_path = 'C:\\Users\\MZ Huo\\Desktop\\50mt.txt'
+    file_path = 'C:\\Users\\MZ Huo\\Desktop\\100mt.txt'
     with open(file_path, encoding='utf-8') as file_obj:
         lines = file_obj.readlines()
         for l in lines:
