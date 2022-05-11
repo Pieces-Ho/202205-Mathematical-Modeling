@@ -29,6 +29,7 @@ if __name__ == "__main__":
     print(p1)
     y_pred = p1(x)                        # 根据函数的多项式表达式，求解 y
  
+    plt.grid(True, linestyle='--', alpha=0.9)
     plot1 = plt.plot(x, y, '*', label='original values')
     plot2 = plt.plot(x, y_pred, 'r', label='fit values')
     plt.title('The line graph of relationship between Coefficient of rolling friction and Initial velocity when 50mT')
