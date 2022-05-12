@@ -16,7 +16,7 @@ if __name__ == "__main__":
             v1.append(b)
         
     for k in range(len(v0)):
-        tp = ((v0[k]**2-v1[k]**2)*0.07)/9.80665
+        tp = ((v0[k]**2-v1[k]**2)*0.01)/(9.80665*0.2)
         cof.append(tp)
         print("v0: ",v0[k], end = "  ")    
         print("v1: ",v1[k])      
