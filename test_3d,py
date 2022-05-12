@@ -3,16 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from numpy import double
+from scipy.interpolate import griddata
+from matplotlib import cm
 
-# 绘制 f(x,y)=x^2 +y^2
-""" x = np.arange(-10,10,0.2)
-y = np.arange(-10,10,0.2)
-f_x_y=np.power(x,2)+np.power(y,2)
-fig = plt.figure()
-ax = fig.add_subplot(projection='3d')
-# ax = plt.gca(projection='3d')
-ax.plot(x,y,f_x_y)
-plt.show() """
 # 绘制 蓝色 3d曲面
 """ # 创建 3D 图形对象
 fig = plt.figure()
@@ -66,10 +59,6 @@ with open(file_path, encoding='utf-8') as file_obj:
         v4.append(h)
         x05.append(m)
         v5.append(n)
-        
-        
-# for k in range(len(v1)):
-#     print("x1:",x01[k],",v1:",v1[k], ",x2:",x02[k],",v2:",v2[k], ",x3:",x03[k],",v3:",v3[k], ",x4:",x04[k],",v4:",v4[k],",x5:",x05[k],",v5:",v5[k], end = "\n")
 
 for k in range(len(v1)):
     tp1 = ((x01[k]**2-v1[k]**2)*0.07)/9.80665
@@ -92,14 +81,37 @@ B3 = [100]*32
 B4 = [150]*32
 B5 = [200]*32
 
-
-# 散点图
+# 我的数据
 x = np.array(x01+x02+x03+x04+x05)
 y = np.array(B1+B2+B3+B4+B5)
 z = np.array(cof1+cof2+cof3+cof4+cof5)
 
-fig = plt.figure()
+# 散点图
+# fig = plt.figure()
+# ax = Axes3D(fig)
+# ax.scatter(x, y, z)
+# plt.show()
 
-ax = Axes3D(fig)
+# 三角平面图
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+# ax.plot_trisurf(x, y, z)
+# plt.show()
+
+
+
+
+xi=np.linspace(min(x), max(x),50)
+
+#print xi
+yi=np.linspace(min(y),max(y),50)
+X,Y= np.meshgrid(xi,yi)
+Z = np.nan_to_num(griddata((x,y), z, (X, Y), method='cubic'))
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
 ax.scatter(x, y, z)
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
+linewidth=0, antialiased=False,alpha=0.4)
 plt.show()
+print("Done.")
