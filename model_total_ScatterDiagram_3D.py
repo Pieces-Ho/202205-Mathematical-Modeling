@@ -66,4 +66,10 @@ z = np.array(cof1+cof2+cof3+cof4+cof5)
 fig = plt.figure()
 ax = Axes3D(fig)
 ax.scatter(x, y, z)
+
+plt.title('The Scatter Graph of Relationship between Coefficient of rolling friction with Initial velocity and Magnetic Flux Density')
+plt.xlabel('Initial velocity V0')
+plt.ylabel('The Magnetic Flux Density B')
+plt.clabel('Coefficient of rolling friction')
+
 plt.show()

@@ -1,5 +1,6 @@
 
 import numpy as np
+import math
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from numpy import double
@@ -61,15 +62,15 @@ with open(file_path, encoding='utf-8') as file_obj:
         v5.append(n)
 
 for k in range(len(v1)):
-    tp1 = ((x01[k]**2-v1[k]**2)*0.07)/9.80665
+    tp1 = ((x01[k]**2-v1[k]**2)*0.01)/(9.80665*0.2)
     cof1.append(tp1)
-    tp2 = ((x02[k]**2-v2[k]**2)*0.07)/9.80665
+    tp2 = ((x02[k]**2-v2[k]**2)*0.01)/(9.80665*0.2)
     cof2.append(tp2)
-    tp3 = ((x03[k]**2-v3[k]**2)*0.07)/9.80665
+    tp3 = ((x03[k]**2-v3[k]**2)*0.01)/(9.80665*0.2)
     cof3.append(tp3)
-    tp4 = ((x04[k]**2-v4[k]**2)*0.07)/9.80665
+    tp4 = ((x04[k]**2-v4[k]**2)*0.01)/(9.80665*0.2)
     cof4.append(tp4)
-    tp5 = ((x05[k]**2-v5[k]**2)*0.07)/9.80665
+    tp5 = ((x05[k]**2-v5[k]**2)*0.01)/(9.80665*0.2)
     cof5.append(tp5)
     
 for s in range(len(v1)):
@@ -100,18 +101,34 @@ z = np.array(cof1+cof2+cof3+cof4+cof5)
 
 
 
+# 彩虹插值格子图
+# xi=np.linspace(min(x), max(x),50)
+# #print xi
+# yi=np.linspace(min(y),max(y),50)
+# X,Y= np.meshgrid(xi,yi)
+# Z = np.nan_to_num(griddata((x,y), z, (X, Y), method='cubic'))
 
-xi=np.linspace(min(x), max(x),50)
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+# ax.scatter(x, y, z)
+# ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
+# linewidth=0, antialiased=False,alpha=0.4)
+# plt.show()
+# print("Done.")
 
-#print xi
-yi=np.linspace(min(y),max(y),50)
-X,Y= np.meshgrid(xi,yi)
+# 线框图
+
+X, Y = np.meshgrid(x, y)
 Z = np.nan_to_num(griddata((x,y), z, (X, Y), method='cubic'))
+p = X*Y*Z
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter(x, y, z)
+fig =plt.figure()
+ax = plt.axes(projection='3d')
+# ax.plot_wireframe(x, y, z, color='c')
+# ax.scatter(x, y, z, p)
 ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
 linewidth=0, antialiased=False,alpha=0.4)
+ax.set_title('wireframe')
+ax.set_title('surface')
 plt.show()
 print("Done.")

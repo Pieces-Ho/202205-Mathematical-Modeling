@@ -79,5 +79,11 @@ ax = fig.add_subplot(111, projection='3d')
 ax.scatter(x, y, z)
 ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
 linewidth=0, antialiased=False,alpha=0.4)
+
+plt.title('The Plane Graph of Relationship between Coefficient of rolling friction with Initial velocity and Magnetic Flux Density')
+plt.xlabel('Initial velocity V0')
+plt.ylabel('The Magnetic Flux Density B')
+plt.clabel('Coefficient of rolling friction')
+
 plt.show()
 print("Done.")
