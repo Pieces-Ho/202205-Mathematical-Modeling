@@ -1,3 +1,5 @@
+# model_3D_GridPlane
+
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -40,15 +42,15 @@ with open(file_path, encoding='utf-8') as file_obj:
         v5.append(n)
 
 for k in range(len(v1)):
-    tp1 = ((x01[k]**2-v1[k]**2)*0.01)/(9.80665*0.2)
+    tp1 = ((x01[k]**2-v1[k]**2)*0.07)/9.80665
     cof1.append(tp1)
-    tp2 = ((x02[k]**2-v2[k]**2)*0.01)/(9.80665*0.2)
+    tp2 = ((x02[k]**2-v2[k]**2)*0.07)/9.80665
     cof2.append(tp2)
-    tp3 = ((x03[k]**2-v3[k]**2)*0.01)/(9.80665*0.2)
+    tp3 = ((x03[k]**2-v3[k]**2)*0.07)/9.80665
     cof3.append(tp3)
-    tp4 = ((x04[k]**2-v4[k]**2)*0.01)/(9.80665*0.2)
+    tp4 = ((x04[k]**2-v4[k]**2)*0.07)/9.80665
     cof4.append(tp4)
-    tp5 = ((x05[k]**2-v5[k]**2)*0.01)/(9.80665*0.2)
+    tp5 = ((x05[k]**2-v5[k]**2)*0.07)/9.80665
     cof5.append(tp5)
     
 for s in range(len(v1)):
